@@ -1,6 +1,7 @@
-# vue-table-with-tree-grid
+# vue-table-with-tree-grid-icon
 
 > A table (with tree-grid) component for Vue.js 2.0. (Its style extends [@iView](https://github.com/iview/iview))
+> This table is based 'vue-table-with-tree-grid' packages, I changed the icon for expanding and folding icons, folders, etc.
 
 ## Example
 
@@ -11,7 +12,7 @@
 Use npm:
 
 ```shell
-npm i vue-table-with-tree-grid -S
+npm i vue-table-with-tree-grid-icon -S
 ```
 
 Or use yarn:
@@ -24,7 +25,7 @@ yarn add vue-table-with-tree-grid
 
 ```javascript
 import Vue from 'vue'
-import ZkTable from 'vue-table-with-tree-grid'
+import ZkTable from 'vue-table-with-tree-grid-icon'
 
 Vue.use(ZkTable)
 ```
