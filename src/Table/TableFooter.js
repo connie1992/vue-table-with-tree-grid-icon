@@ -5,18 +5,14 @@ export default {
   name: 'zk-table__footer',
   mixins: [mixins],
   data() {
-    return {
-
-    };
+    return {};
   },
   computed: {
     table() {
       return this.$parent;
     },
   },
-  methods: {
-
-  },
+  methods: {},
   render() {
     // 计算各列总和
     function renderCell({ prop }, columnIndex) {
@@ -59,24 +55,24 @@ export default {
 
     // Template
     return (
-      <table cellspacing="0" cellpadding="0" border="0" class={ `${this.prefixCls}__footer` }>
+      <table cellspacing="0" cellpadding="0" border="0" class={`${this.prefixCls}__footer`}>
         <colgroup>
-          { this.table.tableColumns.map(column =>
-            <col width={ column.computedWidth || column.minWidth || column.width }></col>)
+          {this.table.tableColumns.map(column =>
+            <col width={column.computedWidth || column.minWidth || column.width}></col>)
           }
         </colgroup>
         <tfoot>
-          <tr class={ `${this.prefixCls}__footer-row` }>
-            { this.table.tableColumns.map((column, columnIndex) =>
-              <td class={ getClassName.call(this) }>
-                <div class={ `${this.prefixCls}__cell-inner` }>
-                  { this.table.summaryMethod
-                    ? this.table.summaryMethod(this.table.bodyData, column, columnIndex)
-                    : renderCell.call(this, column, columnIndex) }
-                </div>
-              </td>)
-            }
-          </tr>
+        <tr class={`${this.prefixCls}__footer-row`}>
+          {this.table.tableColumns.map((column, columnIndex) =>
+            <td class={getClassName.call(this)}>
+              <div class={`${this.prefixCls}__cell-inner`}>
+                {this.table.summaryMethod
+                  ? this.table.summaryMethod(this.table.bodyData, column, columnIndex)
+                  : renderCell.call(this, column, columnIndex)}
+              </div>
+            </td>)
+          }
+        </tr>
         </tfoot>
       </table>
     );

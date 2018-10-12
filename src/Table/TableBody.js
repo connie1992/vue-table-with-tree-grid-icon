@@ -221,7 +221,9 @@ export default {
                 class={ `${this.prefixCls}--tree-icon zk-icon zk-icon-${row._isFold ? 'plus' : 'minus'}-square-o`}
                 on-click={ $event => this.handleEvent($event, 'icon', { row, rowIndex, column, columnIndex }, { isFold: row._isFold }) }></i>
             }
-            { row[column.prop] ? row[column.prop] : '' }
+            <i
+              class={`${this.prefixCls}--item-icon zk-icon ${row._childrenLen > 0 ? 'icon-folder' : 'icon-page'}`}></i>
+            { row[column.prop] ? `${row[column.prop]}` : '' }
         </span>;
       }
       // TreeType children's index
