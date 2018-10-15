@@ -86,6 +86,7 @@ export default {
       if (certainType.row && (eventType === 'mouseenter' || eventType === 'mouseleave')) {
         const { hover } = others;
         const target = latestData[rowIndex];
+        // 替换表格元素，设置新的值
         latestData.splice(rowIndex, 1, {
           ...target,
           _isHover: hover,
@@ -93,6 +94,13 @@ export default {
       }
       if (certainType.cell) {
         return this.table.$emit(`${type}-${eventType}`, latestData[rowIndex], rowIndex, column, columnIndex, $event);
+      }
+      if (certainType.row && (eventType === 'click')) {
+        // 替换表格元素，设置新的值
+        latestData.forEach((v) => {
+          v._isClick = false;
+        });
+        latestData[rowIndex]._isClick = true;
       }
       return this.table.$emit(`${type}-${eventType}`, latestData[rowIndex], rowIndex, $event);
     },
@@ -144,6 +152,9 @@ export default {
             classList.push(`${this.prefixCls}--stripe-row`);
           }
           if (this.table.showRowHover && row._isHover) {
+            classList.push(`${this.prefixCls}--row-hover`);
+          }
+          if (this.table.showRowHover && row._isClick) {
             classList.push(`${this.prefixCls}--row-hover`);
           }
         }

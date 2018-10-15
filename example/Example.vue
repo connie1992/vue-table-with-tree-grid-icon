@@ -227,7 +227,11 @@
       },
     },
     methods: {
-
+      rowStyle(row, rowIndex) {
+        console.log('row Style .....');
+        console.log(row);
+        console.log(rowIndex);
+      },
     },
   };
 </script>
