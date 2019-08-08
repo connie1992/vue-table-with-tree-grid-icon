@@ -43,8 +43,9 @@
   /* eslint-disable no-underscore-dangle */
   /* eslint-disable no-param-reassign */
 
-  function getBodyData(data, isTreeType, childrenProp, isFold, level = 1) {
+  function getBodyData(data, isTreeType, childrenProp, isFold, level, parentFold) {
     let bodyData = [];
+    const isFoldVal = isFold != null;
     data.forEach((row, index) => {
       const children = row[childrenProp];
       const childrenLen = Object.prototype.toString.call(children).slice(8, -1) === 'Array' ? children.length : 0;
@@ -53,15 +54,16 @@
         _isExpanded: false,
         _isChecked: false,
         _level: level,
-        _isHide: isFold ? level !== 1 : false,
-        _isFold: isFold,
+        _isHide: isFoldVal ? (isFold ? level !== 1 : false) : parentFold,
+        _isFold: isFoldVal ? isFold : row.isFold,
         _childrenLen: childrenLen,
         _normalIndex: index + 1,
         ...row,
       });
       if (isTreeType) {
         if (childrenLen > 0) {
-          bodyData = bodyData.concat(getBodyData(children, true, childrenProp, isFold, level + 1));
+          bodyData = bodyData.concat(getBodyData(children, true, childrenProp,
+            isFold, level + 1, row.isFold));
         }
       }
     });
@@ -72,7 +74,7 @@
     return {
       bodyHeight: 'auto',
       firstProp: table.columns[0].prop,
-      bodyData: getBodyData(table.data, table.treeType, table.childrenProp, table.isFold),
+      bodyData: getBodyData(table.data, table.treeType, table.childrenProp, table.isFold, 1, false),
     };
   }
 
@@ -176,7 +178,7 @@
       },
       isFold: {
         type: Boolean,
-        default: true,
+        default: null,
       },
       expandType: {
         type: Boolean,

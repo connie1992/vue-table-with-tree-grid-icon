@@ -19,9 +19,10 @@
       :show-row-hover="props.showRowHover"
       :show-index="props.showIndex"
       :tree-type="props.treeType"
-      :is-fold="props.isFold"
       :expand-type="props.expandType"
-      :selection-type="props.selectionType">
+      :selection-type="props.selectionType"
+      :row-style="rowStyle"
+      @row-click="rowClick">
       <template slot="$expand" scope="scope">
         {{ `My name is ${scope.row.name},
            this rowIndex is ${scope.rowIndex}.`
@@ -52,7 +53,6 @@
           showRowHover: true,
           showIndex: false,
           treeType: true,
-          isFold: true,
           expandType: false,
           selectionType: false,
         },
@@ -62,52 +62,21 @@
             sex: 'male',
             likes: ['football', 'basketball'],
             score: 10,
+            isFold: false,
             children: [
               {
                 name: 'Ashley',
                 sex: 'female',
                 likes: ['football', 'basketball'],
+                isFold: true,
                 score: 20,
                 children: [
                   {
                     name: 'Ashley',
                     sex: 'female',
                     likes: ['football', 'basketball'],
+                    // isFold: false,
                     score: 20,
-                  },
-                  {
-                    name: 'Taki',
-                    sex: 'male',
-                    likes: ['football', 'basketball'],
-                    score: 10,
-                    children: [
-                      {
-                        name: 'Ashley',
-                        sex: 'female',
-                        likes: ['football', 'basketball'],
-                        score: 20,
-                      },
-                      {
-                        name: 'Taki',
-                        sex: 'male',
-                        likes: ['football', 'basketball'],
-                        score: 10,
-                        children: [
-                          {
-                            name: 'Ashley',
-                            sex: 'female',
-                            likes: ['football', 'basketball'],
-                            score: 20,
-                          },
-                          {
-                            name: 'Taki',
-                            sex: 'male',
-                            likes: ['football', 'basketball'],
-                            score: 10,
-                          },
-                        ],
-                      },
-                    ],
                   },
                 ],
               },
@@ -116,13 +85,15 @@
                 sex: 'male',
                 likes: ['football', 'basketball'],
                 score: 10,
+                // isFold: false,
               },
             ],
           },
           {
-            name: 'Tom',
-            sex: 'male',
+            name: 'Ashley',
+            sex: 'female',
             likes: ['football', 'basketball'],
+            isFold: true,
             score: 20,
             children: [
               {
@@ -130,66 +101,6 @@
                 sex: 'female',
                 likes: ['football', 'basketball'],
                 score: 20,
-                children: [
-                  {
-                    name: 'Ashley',
-                    sex: 'female',
-                    likes: ['football', 'basketball'],
-                    score: 20,
-                  },
-                  {
-                    name: 'Taki',
-                    sex: 'male',
-                    likes: ['football', 'basketball'],
-                    score: 10,
-                  },
-                ],
-              },
-              {
-                name: 'Taki',
-                sex: 'male',
-                likes: ['football', 'basketball'],
-                score: 10,
-                children: [
-                  {
-                    name: 'Ashley',
-                    sex: 'female',
-                    likes: ['football', 'basketball'],
-                    score: 20,
-                  },
-                  {
-                    name: 'Taki',
-                    sex: 'male',
-                    likes: ['football', 'basketball'],
-                    score: 10,
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            name: 'Tom',
-            sex: 'male',
-            likes: ['football', 'basketball'],
-            score: 20,
-          },
-          {
-            name: 'Tom',
-            sex: 'male',
-            likes: ['football', 'basketball'],
-            score: 20,
-            children: [
-              {
-                name: 'Ashley',
-                sex: 'female',
-                likes: ['football', 'basketball'],
-                score: 20,
-              },
-              {
-                name: 'Taki',
-                sex: 'male',
-                likes: ['football', 'basketball'],
-                score: 10,
               },
             ],
           },
@@ -227,6 +138,10 @@
       },
     },
     methods: {
+      rowClick(row, rowIndex) {
+        console.log(row);
+        console.log(rowIndex);
+      },
       rowStyle(row, rowIndex) {
         console.log('row Style .....');
         console.log(row);

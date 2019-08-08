@@ -95,6 +95,7 @@ export default {
       if (certainType.cell) {
         return this.table.$emit(`${type}-${eventType}`, latestData[rowIndex], rowIndex, column, columnIndex, $event);
       }
+      // 单击行的时候设置状态，用于改变颜色
       if (certainType.row && (eventType === 'click')) {
         // 替换表格元素，设置新的值
         latestData.forEach((v) => {
