@@ -37,6 +37,7 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     'no-plusplus': ["error", { "allowForLoopAfterthoughts": true }],
     "linebreak-style": [0 ,"error", "windows"],
-    "no-param-reassign": ["error", { "props": false }]
+    "no-param-reassign": ["error", { "props": false }],
+    "no-nested-ternary": 0
   }
 }
