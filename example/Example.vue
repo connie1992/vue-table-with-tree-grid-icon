@@ -62,13 +62,13 @@
             sex: 'male',
             likes: ['football', 'basketball'],
             score: 10,
-            isFold: false,
+            // isFold: false,
             children: [
               {
                 name: 'Ashley',
                 sex: 'female',
                 likes: ['football', 'basketball'],
-                isFold: true,
+                // isFold: true,
                 score: 20,
                 children: [
                   {
@@ -93,11 +93,11 @@
             name: 'Ashley',
             sex: 'female',
             likes: ['football', 'basketball'],
-            isFold: true,
+            isFold: false,
             score: 20,
             children: [
               {
-                name: 'Ashley',
+                name: 'Ashley2',
                 sex: 'female',
                 likes: ['football', 'basketball'],
                 score: 20,

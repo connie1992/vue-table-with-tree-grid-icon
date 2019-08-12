@@ -54,8 +54,8 @@
         _isExpanded: false,
         _isChecked: false,
         _level: level,
-        _isHide: isFoldVal ? (isFold ? level !== 1 : false) : parentFold,
-        _isFold: isFoldVal ? isFold : row.isFold,
+        _isHide: isFoldVal ? (isFold ? level !== 1 : false) : parentFold !== false,
+        _isFold: isFoldVal ? isFold : (row.fold) !== false,
         _childrenLen: childrenLen,
         _normalIndex: index + 1,
         ...row,
@@ -63,7 +63,7 @@
       if (isTreeType) {
         if (childrenLen > 0) {
           bodyData = bodyData.concat(getBodyData(children, true, childrenProp,
-            isFold, level + 1, row.isFold));
+            isFold, level + 1, row.fold));
         }
       }
     });
