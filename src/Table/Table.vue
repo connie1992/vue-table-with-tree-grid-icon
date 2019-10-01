@@ -45,6 +45,7 @@
 
   function getBodyData(data, isTreeType, childrenProp, isFold, level, parentFold) {
     let bodyData = [];
+    // 整个表格是不是要折叠，优先级最高
     const isFoldVal = isFold != null;
     data.forEach((row, index) => {
       const children = row[childrenProp];
@@ -54,6 +55,7 @@
         _isExpanded: false,
         _isChecked: false,
         _level: level,
+        // 节点的可见性，先判断整个表格的折叠，然后再判断父节点的折叠
         _isHide: isFoldVal ? (isFold ? level !== 1 : false) : parentFold !== false,
         _isFold: isFoldVal ? isFold : (row.fold) !== false,
         _childrenLen: childrenLen,

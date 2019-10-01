@@ -13,7 +13,7 @@ module.exports = {
       NODE_ENV: '"development"'
     },
     entry: './example/main.js',
-    port: 8080,
+    port: 8035,
     autoOpenBrowser: true
   }
 }

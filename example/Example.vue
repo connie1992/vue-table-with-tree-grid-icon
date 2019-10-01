@@ -62,20 +62,20 @@
             sex: 'male',
             likes: ['football', 'basketball'],
             score: 10,
-            // isFold: false,
+            // fold: false,
             children: [
               {
                 name: 'Ashley',
                 sex: 'female',
                 likes: ['football', 'basketball'],
-                // isFold: true,
+                // fold: true,
                 score: 20,
                 children: [
                   {
                     name: 'Ashley',
                     sex: 'female',
                     likes: ['football', 'basketball'],
-                    // isFold: false,
+                    // fold: false,
                     score: 20,
                   },
                 ],
@@ -85,7 +85,7 @@
                 sex: 'male',
                 likes: ['football', 'basketball'],
                 score: 10,
-                // isFold: false,
+                // fold: false,
               },
             ],
           },
@@ -93,7 +93,7 @@
             name: 'Ashley',
             sex: 'female',
             likes: ['football', 'basketball'],
-            isFold: false,
+            fold: false,
             score: 20,
             children: [
               {
